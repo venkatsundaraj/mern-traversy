@@ -1,19 +1,46 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Module from './Register.module.css'
+import { useSelector,useDispatch } from "react-redux";
+import { authSliceActions } from "../auth/authSlice";
+import { login } from "../auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = function(){
         const [email, setEmail] = useState('')
         const [password, setPassword] = useState('')
-        const [formValue, setFormValue] = useState({
-        email:'',
-        password:''
-    })
+        const navigate = useNavigate()
+
+        const dispatch = useDispatch()
+
+        const {isError, isSuccess, user, isLoading, message} = useSelector(state=>state.auth)
+        
+    
+       useEffect(()=>{
+       
+        if(isError){
+            toast.error(message)
+        }
+        if(isSuccess){
+            navigate('/')
+        }
+        console.log('login')
+        dispatch(authSliceActions.reset())
+
+    },[user, isError, isSuccess, message, navigate, dispatch])
+
+    
     
     const formSubmitHandler = function(e){
         e.preventDefault()
-        setFormValue({email:email,password:password})
+       const formValue = {email:email, password:password}
+        dispatch(login(formValue))
     }
+
+    if(isLoading) return (<h1>Loading</h1>)
+    if(message) return (<p>{message}</p>)
+
     return(
         <div className={Module.container}>
         <form onSubmit={formSubmitHandler}>

@@ -1,23 +1,49 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Module from './Register.module.css'
+import {useSelector, useDispatch} from 'react-redux'
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { authSliceActions, register } from "../auth/authSlice";
 
 const Register = function(){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [formValue, setFormValue] = useState({
-        name:'',
-        email:'',
-        password:''
-    })
+
+    const dispatch  = useDispatch()
+    const navigate = useNavigate()
+    const {isLoading, message, isError, isSuccess, user} = useSelector(state=>state.auth)
+
+    useEffect(()=>{
+        if(isError){
+            toast.error(message)
+        }
+        if(isSuccess){
+            navigate('/')
+        }
+        dispatch(authSliceActions.reset())
+
+    },[user, isError, isSuccess, message, navigate, dispatch])
+    
     
     const formSubmitHandler = function(e){
         e.preventDefault()
+
+        const inputs = {name:name,email:email,password:password}
         
-        setFormValue({name:name,email:email,password:password})
+       
+        if(password !== confirmPassword){
+            toast.error("password do not match")
+        }else{
+            dispatch(register(inputs))
+        }
     }
+
+    if(isLoading) return <h1>Loading...</h1>
+
+
     return(
         <div className={Module.container}>
         <form onSubmit={formSubmitHandler}>

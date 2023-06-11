@@ -19,7 +19,7 @@ exports.registerHandler  = asyncHandler(async (req,res,next)=>{
         const {name, email, password} = req.body
 
     if(!name || !email || !password){
-        return res.status(400).json({status:'not ok'})
+        return res.status(400).json({message:'please enter valid details'})
     }
     const existedUser  = await User.findOne({email:email})
 
@@ -36,7 +36,7 @@ exports.registerHandler  = asyncHandler(async (req,res,next)=>{
         name:name
     })
 
-
+    console.log(newUser)
 
     if(newUser){
 
@@ -64,6 +64,7 @@ exports.registerHandler  = asyncHandler(async (req,res,next)=>{
 
 exports.logninHandler  = asyncHandler(async (req,res,next)=>{
     try{
+        console.log(req.body)
         const {email, password} = req.body
 
     if(!email || !password){

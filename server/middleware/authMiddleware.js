@@ -8,22 +8,32 @@ exports.authHandler = asyncHandler( async function(req, res, next){
         try {
           
             
+            
             token = req.headers.authorization.split(' ')[1]
+            
+           
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
+            
+
             req.user = await User.findById(decoded.id).select('-password')
-            next()
+
+
+            
+          next()
            
         } catch (error) {
-            console.log(error)
+            
             res.status(401)
             throw new Error('not authorized')
         }}
 
-        if(!token){
+    
+         if(!token){
             res.status(401)
             throw new Error('not authorized, no token')
         }
+        
 })
 

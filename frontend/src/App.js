@@ -1,10 +1,11 @@
 import React from "react";
 import {BrowserRouter, Router, Routes, Route} from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
 import Module from './App.module.css'
-import Dashboard from "./pages/dahsboard";
-import Login from "./pages/login";
+import Dashboard from "./pages/Dahsboard";
+import Login from "./pages/Login";
 import Header from "./components/Header"
-import Register from "./pages/register";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter> 
+      <ToastContainer/>
     </React.Fragment>
   );
 }

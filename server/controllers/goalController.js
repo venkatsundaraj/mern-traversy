@@ -12,6 +12,7 @@ exports.getGoals = asyncHandler(async function(req,res,next){
 
 exports.setGoals = asyncHandler(async  function(req,res,next){
 
+   
 
     if(!req.body.goal){
         res.status(404)
@@ -32,6 +33,7 @@ exports.setGoals = asyncHandler(async  function(req,res,next){
 
 
 exports.updateGoals = asyncHandler(async  function(req,res,next){
+    console.log(req.params.userId)
 
     if(!req.body.goal){
         return res.status(400)
@@ -59,6 +61,7 @@ exports.updateGoals = asyncHandler(async  function(req,res,next){
 
 exports.deleteGoals = asyncHandler(async function(req,res,next){
     const deleteId = req.params.id
+    console.log(deleteId)
 
     const deletedGoal = await Goals.findOneAndDelete({_id:deleteId, userId:req.user._id})
 
@@ -72,5 +75,5 @@ exports.deleteGoals = asyncHandler(async function(req,res,next){
    
 
 
-    return res.status(200).json({status:'goal deleted'})
+    return res.status(200).json({status:'goal deleted', id:deletedGoal._id})
 } )
