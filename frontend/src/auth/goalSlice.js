@@ -102,6 +102,25 @@ const goalSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
+             .addCase(updateGoal.pending,(state)=>{
+                state.isLoading = true
+            })
+            .addCase(updateGoal.fulfilled,(state, action)=>{
+                state.isLoading = false
+                state.isSuccess = true
+                const updatedGoalIndex = state.goals.findIndex(goal=>goal._id===action.payload._id)
+
+                const allGoals = [...state.goals]
+                console.log(allGoals, action.payload)
+                allGoals[updatedGoalIndex] = action.payload
+
+                state.goals = allGoals
+            })
+            .addCase(updateGoal.rejected,(state, action)=>{
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
     }
 })
 

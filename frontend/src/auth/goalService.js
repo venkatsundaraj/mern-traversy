@@ -46,7 +46,7 @@ const updateGoal = async function(goal, token){
     }
     const response = await axios.post(`/update-goals/${goal.id}`, goal, config)
 
-    console.log(response)
+    // console.log(response)
 
     return response.data
 }

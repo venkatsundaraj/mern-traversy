@@ -12,13 +12,13 @@ const EditGoal = function(){
     const dispatch = useDispatch()
     const {goals, isSuccess, isError, message, isLoading} = useSelector(state=>state.goals)
 
-  
+  console.log('good')
 
     useEffect(()=>{ 
        const filteredGoal = goals.find(goal=>goal._id.toString()===id.toString())
 
        setInputValue(filteredGoal?.goal)
-
+       
       
        if(isError){
         console.log(message)
@@ -33,13 +33,7 @@ const EditGoal = function(){
     const formSubmitHandler = function(e){
         e.preventDefault()
         dispatch(updateGoal({goal:inputValue, id:id}))
-
-
-        if(isSuccess){
-        navigate('/')
-       }
-
-       
+        if(isSuccess) navigate('/')
     }
 
     if(isLoading) return (<h1>Loading...</h1>)
