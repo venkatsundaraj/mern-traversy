@@ -20,10 +20,12 @@ const Register = function(){
         if(isError){
             toast.error(message)
         }
-        if(isSuccess){
+        if(isSuccess || user){
             navigate('/')
         }
         dispatch(authSliceActions.reset())
+
+        
 
     },[user, isError, isSuccess, message, navigate, dispatch])
     

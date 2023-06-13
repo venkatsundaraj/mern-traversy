@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dahsboard";
 import Login from "./pages/Login";
 import Header from "./components/Header"
 import Register from "./pages/Register";
+import EditGoal from "./components/EditGoal";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
+            <Route path="/edit-goal/:id" element={<EditGoal/>}/>
           </Routes>
         </div>
       </BrowserRouter> 
