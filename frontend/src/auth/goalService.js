@@ -32,8 +32,21 @@ const deleteGoal = async function(id, token){
         }
     }
 
-    const response = await axios.get('/delete-goals/' + id, config)
+    const response = await axios.get(`/delete-goals/${id}`, config)
     
+    console.log(response.data)
+    return response.data
+}
+
+const updateGoal = async function(goal, token){
+    const config = {
+        headers:{
+            Authorization:`Bearer ${token}`
+        }
+    }
+    const response = await axios.post(`/update-goals/${goal.id}`, goal, config)
+
+    console.log(response)
 
     return response.data
 }
@@ -41,7 +54,8 @@ const deleteGoal = async function(id, token){
 const goalService = {
     setGoals:setGoals,
     getGoals:getGoals,
-    deleteGoal:deleteGoal
+    deleteGoal:deleteGoal,
+    updateGoal:updateGoal
 }
 
 export default goalService

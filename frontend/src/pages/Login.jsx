@@ -22,11 +22,14 @@ const Login = function(){
         if(isError){
             toast.error(message)
         }
-        if(isSuccess){
+        if(isSuccess || user){
             navigate('/')
         }
-        console.log('login')
+        
         dispatch(authSliceActions.reset())
+       
+
+        console.log(user, isError, isSuccess, message, navigate, dispatch)
 
     },[user, isError, isSuccess, message, navigate, dispatch])
 
@@ -37,6 +40,7 @@ const Login = function(){
        const formValue = {email:email, password:password}
         dispatch(login(formValue))
     }
+    // console.log('global')
 
     if(isLoading) return (<h1>Loading</h1>)
     if(message) return (<p>{message}</p>)

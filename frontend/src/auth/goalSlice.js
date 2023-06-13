@@ -42,12 +42,23 @@ export const deleteGoal = createAsyncThunk('goals/deletegoal', async function(id
     }
 })
 
+export const updateGoal = createAsyncThunk('goals/update-goal', async function(goal, thunkAPI){
+    try{
+        const token = thunkAPI.getState().auth.user.token
+        
+        return await goalService.updateGoal(goal, token)
+    }catch(err){
+         const message = (err.response && err.response.data && err.response.data.message) || err.message || err.toString()
+         return thunkAPI.rejectWithValue(message)
+    }
+})
+
 const goalSlice = createSlice({
     name:'goals',
     initialState:initialState,
     reducers:{
         reset:(state)=>{
-            state = initialState
+            state = {...initialState, goals:state.goals}
         }
     },
     extraReducers:(builder)=>{

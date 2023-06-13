@@ -25,11 +25,12 @@ const Dashboard = function(){
             console.log(message)
         }
 
-        console.log('logout')
-
+        
         dispatch(getGoals())
 
+        
         return ()=>{
+            console.log('reset btn')
             dispatch(goalActions.reset())
         }
         
