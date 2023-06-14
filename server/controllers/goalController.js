@@ -24,7 +24,7 @@ exports.setGoals = asyncHandler(async  function(req,res,next){
         userId:req.user._id
     })
 
-    
+    console.log(goal)
 
     return res.status(200).json(goal)
 })
