@@ -36,7 +36,6 @@ exports.updateGoals = asyncHandler(async  function(req,res,next){
     console.log(req.body, req.params.userId)
 
     if(!req.body.goal){
-        console.log('not good')
         return res.status(400)
     }
     
