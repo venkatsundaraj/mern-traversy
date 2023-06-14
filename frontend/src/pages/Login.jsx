@@ -16,7 +16,7 @@ const Login = function(){
 
         const {isError, isSuccess, user, isLoading, message} = useSelector(state=>state.auth)
         
-    
+        console.log('login')
        useEffect(()=>{
        
         if(isError){
