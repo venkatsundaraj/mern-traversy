@@ -41,6 +41,7 @@ const Dashboard = function(){
 
     return(
         <React.Fragment>
+            <h1>You can set your goals here</h1>
             <h1>{user && user.name}</h1>
             <p>Set the goals</p>
             <Setgoals/>
