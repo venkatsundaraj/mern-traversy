@@ -15,10 +15,10 @@ function App() {
         <div className={Module.container}>
           <Header/>
           <Routes>
-            <Route path="/" element={<Dashboard/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
-            <Route path="/edit-goal/:id" element={<EditGoal/>}/>
+            <Route exact path="/" element={<Dashboard/>}/>
+            <Route exact path="/login" element={<Login/>}/>
+            <Route exact path="/register" element={<Register/>}/>
+            <Route exact path="/edit-goal/:id" element={<EditGoal/>}/>
             <Route path="*" element={<Dashboard/>}/>
           </Routes>
         </div>
