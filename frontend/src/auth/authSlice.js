@@ -11,7 +11,7 @@ const initialState = {
     isSuccess:false,    
     message:''
 }
-
+//Say hello
 export const register = createAsyncThunk('admin/register',
     async (user,thunkAPI)=>{
         try{
