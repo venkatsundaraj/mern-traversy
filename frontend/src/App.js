@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Header from "./components/Header"
 import Register from "./pages/Register";
 import EditGoal from "./components/EditGoal";
+import Dummy from "./pages/Dummy";
 
 
 function App() {
@@ -17,10 +18,11 @@ function App() {
           <Header/>
           <Routes>
             <Route exact path="/" element={<Dashboard/>}/>
+            <Route exact path="/test" element={<Dummy/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/register" element={<Register/>}/>
             <Route exact path="/edit-goal/:id" element={<EditGoal/>}/>
-            {/* <Route exact path="/test" element={<Test/>}/> */}
+            <Route exact path="/edit-goal/:id" element={<EditGoal/>}/>
             <Route path="*" element={<Dashboard/>}/>
           </Routes>
         </div>
