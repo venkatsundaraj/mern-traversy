@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Header from "./components/Header"
 import Register from "./pages/Register";
 import EditGoal from "./components/EditGoal";
-import Test from "./pages/Test";
+
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/register" element={<Register/>}/>
             <Route exact path="/edit-goal/:id" element={<EditGoal/>}/>
-            <Route exact path="/test" element={<Test/>}/>
+            {/* <Route exact path="/test" element={<Test/>}/> */}
             <Route path="*" element={<Dashboard/>}/>
           </Routes>
         </div>
