@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react'
 
-const test = () => {
-  return <div>this is for pure testing purpose of react.</div>;
-};
+function Test() {
+  return (
+    <section style={{width:"100vw", height:"100vh",backgroundColor:"yellow"}}>
+        <h1>Hello world</h1>
+    </section>
+  )
+}
 
-export default test;
+export default Test
