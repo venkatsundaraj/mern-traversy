@@ -48,7 +48,7 @@ const Login = function(){
     return(
         <div className={Module.container}>
         <form onSubmit={formSubmitHandler}>
-            <h1>Login to set the goals</h1>
+            <h1>Login to set the Goals</h1>
             <div>
                 <input type="text" name="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)}/>
             </div>
